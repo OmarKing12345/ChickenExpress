@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenExpress.Api", "ChickenExpress.Api\ChickenExpress.Api.csproj", "{955F86FE-609F-4081-ACB9-1D613341CDD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenExpress.Application", "ChickenExpress.Application\ChickenExpress.Application.csproj", "{DE7100B8-3C84-4FB8-84DC-55899B1C6F91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenExpress.Domain", "ChickenExpress.Domain\ChickenExpress.Domain.csproj", "{0284DF44-EF56-45B9-8841-2820D7D6D7BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenExpress.Infrastructure", "ChickenExpress.Infrastructure\ChickenExpress.Infrastructure.csproj", "{F860CDC0-D626-4116-87B6-1F633B7E0FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenExpress.Persistence", "ChickenExpress.Persistence\ChickenExpress.Persistence.csproj", "{55103D32-56E8-4608-9848-D9B9DC7E3E19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{955F86FE-609F-4081-ACB9-1D613341CDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955F86FE-609F-4081-ACB9-1D613341CDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955F86FE-609F-4081-ACB9-1D613341CDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955F86FE-609F-4081-ACB9-1D613341CDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE7100B8-3C84-4FB8-84DC-55899B1C6F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7100B8-3C84-4FB8-84DC-55899B1C6F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7100B8-3C84-4FB8-84DC-55899B1C6F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7100B8-3C84-4FB8-84DC-55899B1C6F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0284DF44-EF56-45B9-8841-2820D7D6D7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0284DF44-EF56-45B9-8841-2820D7D6D7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0284DF44-EF56-45B9-8841-2820D7D6D7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0284DF44-EF56-45B9-8841-2820D7D6D7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F860CDC0-D626-4116-87B6-1F633B7E0FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F860CDC0-D626-4116-87B6-1F633B7E0FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F860CDC0-D626-4116-87B6-1F633B7E0FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F860CDC0-D626-4116-87B6-1F633B7E0FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55103D32-56E8-4608-9848-D9B9DC7E3E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55103D32-56E8-4608-9848-D9B9DC7E3E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55103D32-56E8-4608-9848-D9B9DC7E3E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55103D32-56E8-4608-9848-D9B9DC7E3E19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

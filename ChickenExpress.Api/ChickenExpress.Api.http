@@ -1,0 +1,6 @@
+@ChickenExpress.Api_HostAddress = http://localhost:5110
+
+GET {{ChickenExpress.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
