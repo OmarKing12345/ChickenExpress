@@ -2,12 +2,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChickenExpress.Domain\ChickenExpress.Domain.csproj" />
-    <ProjectReference Include="..\ChickenExpress.Infrastructure\ChickenExpress.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Configrations\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

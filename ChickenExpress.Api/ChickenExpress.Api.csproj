@@ -26,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChickenExpress.Application\ChickenExpress.Application.csproj" />
+    <ProjectReference Include="..\ChickenExpress.Infrastructure\ChickenExpress.Infrastructure.csproj" />
     <ProjectReference Include="..\ChickenExpress.Persistence\ChickenExpress.Persistence.csproj" />
   </ItemGroup>
 

@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\ChickenExpress.Application\ChickenExpress.Application.csproj" />
-    <ProjectReference Include="..\ChickenExpress.Domain\ChickenExpress.Domain.csproj" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Out_Services\" />
+    <ProjectReference Include="..\ChickenExpress.Application\ChickenExpress.Application.csproj" />
+    <ProjectReference Include="..\ChickenExpress.Domain\ChickenExpress.Domain.csproj" />
+    <ProjectReference Include="..\ChickenExpress.Persistence\ChickenExpress.Persistence.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
