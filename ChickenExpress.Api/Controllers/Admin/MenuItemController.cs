@@ -1,4 +1,6 @@
 ﻿using ChickenExpress.Application.Features.MenuItems.Command.AddMenuItem;
+using ChickenExpress.Application.Features.MenuItems.Command.DeleteMenuItem;
+using ChickenExpress.Application.Features.MenuItems.Command.UpdateMenuItem;
 using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItemById;
 using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems;
 using ChickenExpress.Domain.Entities;
@@ -37,9 +39,30 @@ namespace ChickenExpress.Api.Controllers.Admin
             
         }
         [HttpPost("AddMenuItem")]
-        public async Task<IActionResult> AddMenuItem([FromBody] AddMenuItemCommand addMenuItemCommand)
+        public async Task<IActionResult> AddMenuItem([FromForm] AddMenuItemCommand addMenuItemCommand)
         {
             var result = await _mediator.Send(addMenuItemCommand);
+            if (result.Succeeded)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
+
+        [HttpDelete("DeleteMenuItem")]
+        public async Task<IActionResult> DeleteMenuItem([FromForm] int MenuItemId)
+        {
+            var result = await _mediator.Send(new DeleteMenuItemCommand(MenuItemId));
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPut("UpdateMenuItem")]
+        public async Task<IActionResult> UpdateMenuItem([FromForm] UpdateMenuItemCommand updateMenuItemCommand)
+        {
+            var result = await _mediator.Send(updateMenuItemCommand);
             if (result.Succeeded)
                 return Ok(result);
 

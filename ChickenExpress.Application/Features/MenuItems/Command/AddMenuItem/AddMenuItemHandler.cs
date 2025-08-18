@@ -1,4 +1,5 @@
-﻿using ChickenExpress.Application.ResponsesApi;
+﻿using ChickenExpress.Application.Interfaces;
+using ChickenExpress.Application.ResponsesApi;
 using ChickenExpress.Domain.Entities;
 using ChickenExpress.Infrastructure.Services;
 using MediatR;
@@ -13,30 +14,35 @@ namespace ChickenExpress.Application.Features.MenuItems.Command.AddMenuItem
     public class AddMenuItemHandler : ResponseHandler, IRequestHandler<AddMenuItemCommand, Response<bool>>
     {
         private readonly IMenuItemService _menuItemService;
+        private readonly IFileStorageService _fileStorageService;
 
-        public AddMenuItemHandler(IMenuItemService menuItemService)
+        public AddMenuItemHandler(IMenuItemService menuItemService, IFileStorageService fileStorageService)
         {
             _menuItemService = menuItemService;
+            _fileStorageService = fileStorageService;
         }
 
         public async Task<Response<bool>> Handle(AddMenuItemCommand request, CancellationToken cancellationToken)
         {
-            var item = new MenuItem
-            {
-                CategoryId = request.CategoryId,
-                Description = request.Description,
-                ImageUrl = request.ImageUrl,
-                IsActive = request.IsActive,
-                Name = request.Name,
-            };
+            string? imagePath = null;
 
-            var result = await _menuItemService.AddMenuItem(item);
-            if (result)
+            if (request.ImageUrl != null)
             {
-                return Success(true);
+                imagePath = await _fileStorageService.SaveFileAsync(request.ImageUrl, "images");
             }
 
-            return BadRequest<bool>(); 
+            var menuItem = new MenuItem
+            {
+                CategoryId = request.CategoryId,
+                Name = request.Name,
+                Description = request.Description,
+                ImageUrl = imagePath,
+                IsActive = request.IsActive
+            };
+
+            await _menuItemService.AddMenuItem(menuItem);
+
+            return new Response<bool>(true, "Menu item created successfully");
         }
     }
 }

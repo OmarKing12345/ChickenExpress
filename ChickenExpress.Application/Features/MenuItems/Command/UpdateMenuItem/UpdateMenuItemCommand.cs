@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChickenExpress.Application.Features.MenuItems.Command.AddMenuItem
+namespace ChickenExpress.Application.Features.MenuItems.Command.UpdateMenuItem
 {
-    public record AddMenuItemCommand(int CategoryId, string Name, string? Description,
-        IFormFile? ImageUrl, bool IsActive):IRequest<Response<bool>>
+    public record UpdateMenuItemCommand(int Id,int? CategoryId, string? Name, string? Description,
+        IFormFile? ImageUrl, bool? IsActive):IRequest<Response<GetMenuItemsResponse>>
     {
     }
 }

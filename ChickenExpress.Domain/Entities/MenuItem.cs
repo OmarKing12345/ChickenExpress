@@ -26,7 +26,7 @@ namespace ChickenExpress.Domain.Entities
         [MaxLength(1000)]
         public string? ImageUrl { get; set; }
 
-        public bool IsActive { get; set; } = true;
+        public bool? IsActive { get; set; } = true;
 
         // Nav
         public MenuCategory Category { get; set; } = default!;

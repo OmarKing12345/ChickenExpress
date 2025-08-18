@@ -1,4 +1,5 @@
 using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems;
+using ChickenExpress.Application.Interfaces;
 using ChickenExpress.Infrastructure.Services;
 using ChickenExpress.Persistence.ApplictionDbContext; // €Ì¯—Â« ·Ê ⁄‰œﬂ namespace „Œ ·› („À·« .Context)
 using ChickenExpress.Persistence.Repositories.IRepository;
@@ -29,9 +30,14 @@ namespace ChickenExpress.Api
 
             // Services
             builder.Services.AddScoped<IMenuItemService, MenuItemService>();
+            builder.Services.AddScoped<IItemVariantService, ItemVariantServicecs>();
 
             // Repositories
             builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+            builder.Services.AddScoped<IItemVariantRepository, ItemVariantRepository>();
+
+            builder.Services.AddScoped<IFileStorageService, FileStorageService>();
+
 
 
             var app = builder.Build();
@@ -41,6 +47,7 @@ namespace ChickenExpress.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
