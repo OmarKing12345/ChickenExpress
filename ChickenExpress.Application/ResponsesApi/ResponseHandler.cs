@@ -19,14 +19,14 @@ namespace ChickenExpress.Application.ResponsesApi
                 Message = "Deleted Successfully"
             };
         }
-        public Response<T> Success<T>(T entity, object Meta = null)
+        public Response<T> Success<T>(T entity, object Meta = null, string message=null)
         {
             return new Response<T>()
             {
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Succeeded = true,
-                Message = "Added Successfully",
+                Message = message == null ? "Added" : message,
                 Meta = Meta
             };
         }
