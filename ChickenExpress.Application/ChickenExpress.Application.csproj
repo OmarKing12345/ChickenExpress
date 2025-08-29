@@ -1,11 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="DTOs\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <None Remove="DTOs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ChickenExpress.Domain\ChickenExpress.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
     <Folder Include="Features\HomeItem\" />
   </ItemGroup>
 

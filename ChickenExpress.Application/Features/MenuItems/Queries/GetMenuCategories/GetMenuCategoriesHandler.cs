@@ -9,7 +9,7 @@ using MediatR;
 
 namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuCategories
 {
-    internal class GetMenuCategoriesHandler : ResponseHandler, IRequestHandler<GetMenuCategoriesQuery, Response<List<GetMenuCategoryResponse>>>
+    public class GetMenuCategoriesHandler : ResponseHandler, IRequestHandler<GetMenuCategoriesQuery, Response<List<GetMenuCategoryResponse>>>
     {
         private readonly IMenuCategoriesService _menuCategoriesService;
 

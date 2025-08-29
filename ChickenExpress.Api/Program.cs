@@ -1,10 +1,14 @@
 using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems;
 using ChickenExpress.Application.Interfaces;
+using ChickenExpress.Domain.Entities;
 using ChickenExpress.Infrastructure.Services;
 using ChickenExpress.Persistence.ApplictionDbContext;
 using ChickenExpress.Persistence.Repositories.IRepository;
 using ChickenExpress.Persistence.Repositories.Repository;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 namespace ChickenExpress.Api
 {
@@ -14,7 +18,7 @@ namespace ChickenExpress.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ≈÷«›… CORS ··”„«Õ ·‹ Angular »«·Ê’Ê·
+            //  CORS  Angular
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngular",
@@ -36,6 +40,22 @@ namespace ChickenExpress.Api
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
                 opt.UseSqlServer(cs));
 
+            // Redis
+            builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+            {
+                var redisConnection = builder.Configuration.GetConnectionString("Redis");
+                return ConnectionMultiplexer.Connect(redisConnection);
+            });
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()   
+                .AddDefaultTokenProviders();
+
+            builder.Services.AddAuthentication();
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+
             // MediatR
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(GetMenuItemsQuery).Assembly));
@@ -43,18 +63,15 @@ namespace ChickenExpress.Api
             // Services
             builder.Services.AddScoped<IMenuItemService, MenuItemService>();
             builder.Services.AddScoped<IItemVariantService, ItemVariantServicecs>();
-
             builder.Services.AddScoped<IMenuCategoriesService, MenuCategoryService>();
-
+            builder.Services.AddScoped<ICartService, CartService>();
 
             // Repositories
             builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
             builder.Services.AddScoped<IItemVariantRepository, ItemVariantRepository>();
             builder.Services.AddScoped<IMenuCategoryRepository, MenuCategoryRepository>();
-
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<IFileStorageService, FileStorageService>();
-
-
 
             var app = builder.Build();
 
@@ -65,10 +82,11 @@ namespace ChickenExpress.Api
             }
             app.UseStaticFiles();
 
-            // ≈÷«›… CORS middleware
+            //  CORS middleware
             app.UseCors("AllowAngular");
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
