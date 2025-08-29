@@ -1,4 +1,5 @@
-﻿using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems;
+﻿using ChickenExpress.Application.Features.MenuCategory.Query.GetMenuCategories;
+using ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems;
 using ChickenExpress.Application.ResponsesApi;
 using MediatR;
 using Microsoft.AspNetCore.Http;

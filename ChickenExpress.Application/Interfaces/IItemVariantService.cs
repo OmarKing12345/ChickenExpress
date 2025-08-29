@@ -13,5 +13,8 @@ namespace ChickenExpress.Application.Interfaces
         Task<List<GetAlllItemVariantResponse>> GetAllItemVariant();
         Task<GetAlllItemVariantResponse> GetItemVariantById(int Id);
         Task<bool> AddItemVariant(ItemVariant itemVariant);
+
+        Task<bool> DeleteItemVariant(int ItemVariantId);
+        Task<bool> UpdateItemVariant(ItemVariant itemVariant);
     }
 }

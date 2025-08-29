@@ -13,6 +13,7 @@ namespace ChickenExpress.Application.Features.ItemVariant.Command.GetAllItemVari
     public class GetAlllItemVariantResponse
     {
 
+        public int Id { get; set; }
         public int MenuItemId { get; set; }
 
         public string Name { get; set; } = string.Empty;
