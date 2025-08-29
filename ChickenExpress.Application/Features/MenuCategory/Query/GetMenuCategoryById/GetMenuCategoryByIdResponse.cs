@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuCategories
+namespace ChickenExpress.Application.Features.MenuCategory.Query.GetMenuCategoryById
 {
-    public class GetMenuCategoryResponse
+    public class GetMenuCategoryByIdResponse
     {
         public int Id { get; set; }
 
@@ -15,6 +14,5 @@ namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuCategorie
 
         public int SortOrder { get; set; } = 0;
         public bool IsActive { get; set; } = true;
-
     }
 }

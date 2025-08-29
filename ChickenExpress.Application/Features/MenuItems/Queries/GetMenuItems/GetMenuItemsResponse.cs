@@ -11,7 +11,7 @@ namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItems
 {
     public class GetMenuItemsResponse
     {
-
+        public int Id { get; set; }
         public int CategoryId { get; set; }
 
         public string Name { get; set; } = string.Empty;

@@ -8,6 +8,7 @@ namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuItemById
 {
     public class GetMenuItemByIdResponse
     {
+        public int Id { get; set; }
         public int CategoryId { get; set; }
 
         public string Name { get; set; } = string.Empty;

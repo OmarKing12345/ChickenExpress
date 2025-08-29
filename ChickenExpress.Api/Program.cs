@@ -14,18 +14,18 @@ namespace ChickenExpress.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ≈÷«›… CORS ··”„«Õ ·‹ Angular »«·Ê’Ê·
+            // ????? CORS ?????? ??????? ?? Angular
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAngular",
+                options.AddPolicy("AllowAll",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:4200") // Angular URL
+                        policy.AllowAnyOrigin()
                               .AllowAnyHeader()
-                              .AllowAnyMethod()
-                              .AllowCredentials();
+                              .AllowAnyMethod();
                     });
             });
+
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -43,18 +43,16 @@ namespace ChickenExpress.Api
             // Services
             builder.Services.AddScoped<IMenuItemService, MenuItemService>();
             builder.Services.AddScoped<IItemVariantService, ItemVariantServicecs>();
-
-            builder.Services.AddScoped<IMenuCategoriesService, MenuCategoryService>();
-
+            builder.Services.AddScoped<IMenuCategoryService, MenuCategoryService>();
+            builder.Services.AddScoped<IStoreService, StoreService>();
 
             // Repositories
             builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
             builder.Services.AddScoped<IItemVariantRepository, ItemVariantRepository>();
             builder.Services.AddScoped<IMenuCategoryRepository, MenuCategoryRepository>();
+            builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 
             builder.Services.AddScoped<IFileStorageService, FileStorageService>();
-
-
 
             var app = builder.Build();
 
@@ -63,14 +61,18 @@ namespace ChickenExpress.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
             app.UseStaticFiles();
 
-            // ≈÷«›… CORS middleware
-            app.UseCors("AllowAngular");
+            // ? CORS ???? ???? ??? Authorization ? MapControllers
+            app.UseCors("AllowAll");
 
             app.UseHttpsRedirection();
+
             app.UseAuthorization();
+
             app.MapControllers();
+
             app.Run();
         }
     }

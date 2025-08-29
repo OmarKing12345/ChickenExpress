@@ -7,13 +7,13 @@ using ChickenExpress.Application.Interfaces;
 using ChickenExpress.Application.ResponsesApi;
 using MediatR;
 
-namespace ChickenExpress.Application.Features.MenuItems.Queries.GetMenuCategories
+namespace ChickenExpress.Application.Features.MenuCategory.Query.GetMenuCategories
 {
     internal class GetMenuCategoriesHandler : ResponseHandler, IRequestHandler<GetMenuCategoriesQuery, Response<List<GetMenuCategoryResponse>>>
     {
-        private readonly IMenuCategoriesService _menuCategoriesService;
+        private readonly IMenuCategoryService _menuCategoriesService;
 
-        public GetMenuCategoriesHandler(IMenuCategoriesService menuCategoriesService)
+        public GetMenuCategoriesHandler(IMenuCategoryService menuCategoriesService)
         {
             _menuCategoriesService = menuCategoriesService;
         }
